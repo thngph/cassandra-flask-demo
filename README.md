@@ -23,6 +23,7 @@ To get started, follow these steps:
 - Run `docker-compose up` (or `docker-compose up -d` to run in detached mode) to start the Docker containers for Cassandra and the Flask server.
 - Wait for the containers to start up. This may take a few minutes.
 - Access the Flask server by navigating to http://localhost:5000 in your web browser.
+- To stop the containers, run `docker-compose down`.
 ## Usage
 Once you have the Flask server running, you can use it to add new video names, add comments to videos, and delete comments.
 
