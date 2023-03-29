@@ -1,5 +1,5 @@
 # Cassandra-Flask Demo
-This repository contains a demo for a Cassandra database in a Docker environment. The database is set up with three nodes and a replication factor of three, ensuring that the service remains available as long as at least one node is up.
+This repository contains a demo for a Cassandra database in a Docker environment. The database is set up with **three nodes and a replication factor of three**, ensuring that the service remains available as long as at least one node is up. **You can shut down any 2 of the 3 nodes to test the server fault tolerance**.
 
 The demo includes a Flask server that provides access to the data. The data is divided into two keyspaces, one for videos and one for comments. You can use the server to add new video names, add comments to videos, and delete comments.
 
@@ -12,8 +12,7 @@ The demo includes a Flask server that provides access to the data. The data is d
 ## Requirements
 To run this demo, you will need:
 
-- Docker
-- Docker Compose
+- [Docker](https://www.docker.com/)
 
 ## Getting Started
 To get started, follow these steps:
