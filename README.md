@@ -35,7 +35,7 @@ To test the fault tolerance of the Cassandra database, you can use the following
 - Add some video names and comments using the Flask server.
 - Stop one of the Cassandra nodes by running the command `docker stop <container_name>` in a terminal window or tab. Replace `<container_name>` with the name of the container you want to stop. You can find the container name by running the command `docker ps` and looking for the name of the container that corresponds to the Cassandra node you want to stop.
 - Verify that the Flask server is still able to access the data and display the video names and comments that you added in step 3. The service should still be working as long as at least one of the remaining Cassandra nodes is up.
-- Restart the Cassandra node that you stopped in step 4 by running the command docker start <container_name> in a terminal window or tab. Replace <container_name> with the name of the container you want to start.
+- Restart the Cassandra node that you stopped in step 4 by running the command `docker start <container_name>` in a terminal window or tab. Replace `<container_name>` with the name of the container you want to start.
 - Verify that the Cassandra node rejoins the cluster and that the data is replicated across all three nodes.
 
 ## Contributing
