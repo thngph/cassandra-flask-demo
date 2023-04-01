@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html style="background: rgb(46,71,195);
+background: radial-gradient(circle, rgba(46,71,195,1) 0%, rgba(197,231,230,1) 100%);">
+
+<head>
+  <style>
+    .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: transparent !important;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem transparent !important;
+    }
+  </style>
+
+  <title>Video Comments - {{ video_name }}</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: transparent;">
+
+
+  <div class="container my-5 p-5 rounded justify-content-center align-items-center"
+    style="width: 75%; background-color: #fff;">
+    <div class="row justify-content-between">
+
+      <div class="">
+        <a class="btn-light navbar-brand rounded-pill d-inline-block text-center p-2  m-2 text-dark"
+        style="width: 80px; font-size: 16px;" href="{{ url_for('video_list',) }}">Back</a>
+  
+      </div>
+      <div class="">
+        <a class="btn-light navbar-brand rounded-pill d-inline-block text-center p-2  m-2 text-dark"
+        style="width: 80px; font-size: 16px;" href="{{ url_for('delete_video', video_id=video_id) }}">Delete</a>
+  
+      </div>
+    </div>
+
+   
+    <div class="container" style="width: 75%;">
+      <!-- <h1 class="text-center p-3">{{ video_name }}</h1> -->
+
+
+      <form method="POST" class="mx-auto py-5" style="width: 75%;" action="{{ url_for('update_video', video_id=video_id) }}">
+
+        <div class="row flex-row align-items-center justify-content-center">
+          <div class="col-10">
+            <div class="form-group">
+              <!-- <label for="video_name">Video Name:</label> -->
+              <input type="text"
+              id="new_video_name"
+                style="font-size:25px; border-bottom: 1px solid transparent !important; border-top: 0px !important; border-left: 0px !important; border-right: 0px !important;"
+                class="form-control rounded-0 text-center" name="new_video_name" placeholder="{{ video_name }}" required>
+            </div>
+          </div>
+          <div class="col-2">
+            <button type="submit"
+              style="border-color: transparent; font-size:16px; background-color: transparent;"
+              class="navbar-brand rounded-pill d-inline-block text-center text-light">📝</button>
+          </div>
+        </div>
+
+    </form>
+
+      {% if comments %}
+      <ul>
+        {% for comment in comments %}
+        <div class="comment py-5">
+          <p><strong>{{ comment.username }}:</strong></p>
+          <p>{{ comment.comment }}</p>
+          <a class="text-secondary"
+            href="{{ url_for('delete_comment', video_id=comment.video_id, comment_id=comment.id) }}">Delete</a>
+        </div>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No comments yet.</p>
+      {% endif %}
+    </div>
+
+
+    <hr>
+    <form class="mx-auto" style="width: 75%;" action="{{ url_for('submit_comment') }}" method="POST">
+      <input type="hidden" name="video_id" value="{{ video_id }}">
+
+
+      <div class="row flex-row align-items-center justify-content-center">
+        <div class="col-3">
+          <div class="form-group">
+            <!-- <label for="comment_username">Username:</label> -->
+            <input type="text"
+              style="border-bottom: 1px solid #6c757d !important; border-top: 0px !important; border-left: 0px !important; border-right: 0px !important;"
+              class="form-control rounded-0" name="comment_username" placeholder="Username" required>
+          </div>
+        </div>
+
+        <div class="col-7">
+          <div class="form-group">
+            <!-- <label for="comment_text">Comment:</label> -->
+            <input type="text"
+              style="border-bottom: 1px solid #6c757d !important; border-top: 0px !important; border-left: 0px !important; border-right: 0px !important;"
+              class="form-control rounded-0" name="comment_text" placeholder="Write your comment here" required></input>
+          </div>
+        </div>
+
+        <div class="col-2"> <button type="submit"
+            style="width: 100px; border-color: transparent; font-size:16px; background-color: rgb(46,71,195);"
+            class="navbar-brand rounded-pill d-inline-block text-center mb-2 text-light">Comment</button>
+        </div>
+    </form>
+  </div>
+
+  </div>
+
+
+  </div>
+</body>
+
+</html>

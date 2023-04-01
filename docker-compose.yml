@@ -36,4 +36,4 @@ services:
       - cassandra1
       - cassandra2
       - cassandra3
-    command: ["bash", "-c", "sleep 120 && python ./flask/app.py"]
+    command: ["bash", "-c", "sleep 120 && python ./flask-server/app.py"]

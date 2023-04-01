@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="background: rgb(46,71,195);
+background: radial-gradient(circle, rgba(46,71,195,1) 0%, rgba(197,231,230,1) 100%);">
+
+<head>
+  <style>
+    .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: transparent !important;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem transparent !important;
+    }
+  </style>
+  <title>Video List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: transparent;">
+  <div class="container mt-5 rounded"
+    style="width: 75%; background-color: #fff; padding-top:30px; padding-bottom: 75px; margin-bottom: 130px;">
+
+    <div class="container py-5" style="width: 75%;">
+      <h1 class="text-center">Add video</h1>
+
+      <form action="{{ url_for('add_video') }}" class="mx-auto" style="width: 75%;" method="POST">
+
+        <div class="row flex-row align-items-center justify-content-center">
+          <div class="col-10">
+            <div class="form-group">
+              <!-- <label for="video_name">Video Name:</label> -->
+              <input type="text"
+                style="border-bottom: 1px solid #6c757d !important; border-top: 0px !important; border-left: 0px !important; border-right: 0px !important;"
+                class="form-control rounded-0" name="video_name" placeholder="New video name" required>
+            </div>
+          </div>
+          <div class="col-2">
+            <button type="submit"
+              style="width: 100px; border-color: transparent; font-size:16px; background-color: rgb(46,71,195);"
+              class="navbar-brand rounded-pill d-inline-block text-center mb-3 text-light">Submit</button>
+          </div>
+        </div>
+      </form>
+
+      <hr>
+
+      <h1 class="text-center">Video List</h1>
+      {% if videos %}
+
+
+      <div class="bd-example d-flex flex-wrap justify-content-start align-items-center mx-5 py-5">
+        <style>
+          .card {
+            position: relative;
+            overflow: hidden;
+          }
+
+          .card img {
+            transition: transform 0.4s ease-out;
+          }
+
+          .card:hover {
+            transform: scale(1.012);
+          }
+        </style>
+        {% for video in videos %}
+
+
+        <a class="text-decoration-none text-dark" href="{{ url_for('video_comments', video_id=video['id']) }}">
+          <div class="card mx-2" style="width: 16rem;">
+            <img class="card-img-top" data-src="holder.js/100px180/" alt="100%x180"
+              style="height: 180px; width: 100%; display: block;" src="https://source.unsplash.com/random/?vietnam"
+              data-holder-rendered="true">
+            <div class="card-body">
+              <h5 class="card-title">{{ video['name'] }}</h5>
+              <p class="card-text">Description [...]</p>
+              <!-- <a href="{{ url_for('video_comments', video_id=video['id']) }}" class="btn rounded-pill text-white" style="background-color: rgb(46,71,195);">View</a> -->
+            </div>
+          </div>
+
+        </a>
+        
+        {% endfor %}
+
+        
+      {% else %}
+      <p>No videos found.</p>
+      {% endif %}
+      </div>
+
+
+    </div>
+
+  </div>
+  </div>
+</body>
+
+</html>
