@@ -1,6 +1,9 @@
 from cassandra.cluster import Cluster
 
 def init_db(session):
+    """
+    Create Keyspaces if not exist.
+    """
     
     session.execute("""
         CREATE KEYSPACE IF NOT EXISTS videos 
@@ -25,3 +28,12 @@ def init_db(session):
             PRIMARY KEY ((video_id), comment_id)
         ) WITH CLUSTERING ORDER BY (comment_id ASC);
     """)
+    session.shutdown()
+
+def init_session(nodes=['cassandra1', 'cassandra2', 'cassandra3']):
+    return Cluster(nodes).connect()
+
+def check_session(session):
+    if not session or session.is_shutdown:
+        session = init_session()
+        

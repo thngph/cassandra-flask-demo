@@ -64,9 +64,9 @@ background: radial-gradient(circle, rgba(46,71,195,1) 0%, rgba(197,231,230,1) 10
     </form>
 
       {% if comments %}
-      <ul>
+      <ul class="py-3">
         {% for comment in comments %}
-        <div class="comment py-5">
+        <div class="comment py-2">
           <p><strong>{{ comment.username }}:</strong></p>
           <p>{{ comment.comment }}</p>
           <a class="text-secondary"

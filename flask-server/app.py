@@ -1,15 +1,12 @@
-from cassandra.cluster import Cluster
 from flask import Flask
-from init_db import init_db
-from routes import *
+from helpers.session import *
+from routes.data_ops import *
 
 app = Flask(__name__, template_folder='templates')
 
 # Connect to Cassandra cluster
-session = Cluster(['cassandra1', 'cassandra2', 'cassandra3']).connect()
-init_db(session)
-session.shutdown()
-
+nodes = ['cassandra1', 'cassandra2', 'cassandra3']
+init_db(init_session(nodes))
 
 
 app.add_url_rule('/', 'video_list', video_list) # Serve video list page
