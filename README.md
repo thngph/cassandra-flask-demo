@@ -26,6 +26,8 @@ To get started, follow these steps:
 ## Usage
 Once you have the Flask server running, you can use it to add new video names, add comments to videos, and delete comments.
 
+[screen-capture (3).webm](https://user-images.githubusercontent.com/67597758/229447735-9c7c1e08-49f4-44f9-a532-455b63ddd215.webm)
+
 ## Testing Fault Tolerance
 To test the fault tolerance of the Cassandra database, you can use the following steps:
 
