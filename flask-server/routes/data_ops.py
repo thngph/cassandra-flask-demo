@@ -51,7 +51,7 @@ def update_video(video_id):
         UPDATE videos.video_names SET video_name = %s WHERE video_id = %s
     """, (new_video_name, video_id)) # Update video name
 
-    return redirect(url_for('video_list')) # Redirect to video list page
+    return redirect(url_for('video_comments', video_id=video_id)) # Redirect to video comments page
 
 
 
